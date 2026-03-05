@@ -1,17 +1,23 @@
 	package com.orangehrm.app.pageobjects;
 	
-	import org.openqa.selenium.WebDriver;
+	import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.support.FindBy;
 	import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 	
 	public class LoginPage {
 		
 		//creating web driver
 		WebDriver ldriver;
+		WebDriverWait wait;
 		public LoginPage(WebDriver rdriver)
 		{
 		ldriver = rdriver;
+		wait = new WebDriverWait(ldriver, Duration.ofSeconds(10));
 		PageFactory.initElements(rdriver, this);
 		}
 	    // finding the elements by xpath
@@ -22,10 +28,12 @@
 		// setting username and password
 		public void setUSername(String userName)
 		{
+			 wait.until(ExpectedConditions.visibilityOf(userNameInput));
 			userNameInput.sendKeys(userName);
 		}
 		
 		public void setPassword(String password) {
+			wait.until(ExpectedConditions.visibilityOf(passwordInput));
 			passwordInput.sendKeys(password);
 		}
 		

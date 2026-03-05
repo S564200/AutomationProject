@@ -25,6 +25,7 @@ public class TC_Myinfo extends Baseclass {
 		myinfo.Recruitmentpage();
 		myinfo.directoryinfo();
 		myinfo.Timesheetmethod();
+		myinfo.AdminTestDemo();
 		
 		
 		Thread.sleep(3000);

@@ -25,7 +25,7 @@ public class Myinfo {
 	{
 	ldriver = rdriver;
 	PageFactory.initElements(rdriver, this);
-	wait = new WebDriverWait(rdriver, Duration.ofSeconds(10));
+	wait = new WebDriverWait(rdriver, Duration.ofSeconds(20));
 	
 	}
 	@FindBy(xpath = "//a[@href=\"/web/index.php/directory/viewDirectory\"]") WebElement MyDirectory;
@@ -52,6 +52,10 @@ public class Myinfo {
 	@FindBy(xpath = "//input[@class=\"oxd-input oxd-input--active\"]") WebElement empid;
 	@FindBy(xpath = "//button[@type=\"submit\"]") WebElement searchButton;
 	@FindBy(xpath = "//label[contains(text(),'License Number')]/ancestor::div[contains(@class,'oxd-input-group')]//input") WebElement DLField;
+	@FindBy(xpath = "//a[@href=\"/web/index.php/admin/viewAdminModule\"]") WebElement AdminTest;
+	@FindBy(xpath = "//button[@class=\"oxd-button oxd-button--medium oxd-button--secondary\"]") WebElement addAdmin;
+	@FindBy(xpath = "(//i[contains(@class,'oxd-select-text--arrow')])[1]") WebElement userRole;
+	@FindBy(xpath = "//span[text()='ESS']") WebElement ESSRole;
 	
 	public void PIMDemo() throws InterruptedException {
 
@@ -162,6 +166,14 @@ logger.info("Clearing Driving License field");
 		acr.build().perform();
 		submitButton.click();
 		
+	}
+	
+	public void AdminTestDemo() {
+		logger.info("Clicking the Admin column");
+		wait.until(ExpectedConditions.elementToBeClickable(AdminTest)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(addAdmin)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(userRole)).click();
+		wait.until(ExpectedConditions.elementToBeClickable(ESSRole)).click();
 	}
 	
 	public void Timesheetmethod() throws InterruptedException {
